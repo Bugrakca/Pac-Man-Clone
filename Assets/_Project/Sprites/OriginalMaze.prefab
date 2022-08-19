@@ -63,7 +63,7 @@ GameObject:
   - component: {fileID: 1099935846759886703}
   - component: {fileID: 1099935846759886700}
   - component: {fileID: 1099935846759886701}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OriginalMaze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
