@@ -13,7 +13,7 @@ public class PacmanMove : MonoBehaviour
     public float speed = 8.0f;
     public float speedMultiplier = 1.0f;
     public LayerMask obstacleLayer;
-    public float testValue;
+    public float boxSize;
 
     private Rigidbody2D _rigidbody2D;
     
@@ -53,14 +53,17 @@ public class PacmanMove : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 position = _rigidbody2D.position;
-        Vector2 translation = _direction * speed * speedMultiplier * Time.fixedDeltaTime;
+        Vector2 translation = _direction * speed * speedMultiplier;
         
         _rigidbody2D.MovePosition(position + translation);
+        
+        GetComponent<Animator>().SetFloat("DirX", _direction.x);
+        GetComponent<Animator>().SetFloat("DirY", _direction.y);
     }
 
     bool Valid(Vector2 direction)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * testValue, 0.0f, direction, 1.5f, obstacleLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, Vector2.one * boxSize, 0.0f, direction, 1.5f, obstacleLayer);
         return hit.collider == null;
     }
 
